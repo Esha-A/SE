@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url("loginBackground.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 1000px;
+}
+
+
+/* Style the header */
+.header {
+    grid-area: header;
+    font-size: 90px;
+    text-align: left;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: #B73A38;
+}
+.subhead {
+    grid-area: subhead;
+    font-size: 50px;
+    text-align: left;
+    margin-left: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: #B73A38;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header'
+    'subhead subhead subhead subhead subhead subhead'
+    'left left middle middle right right' 
+    'footer footer footer footer footer footer';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+  grid-gap: 20px;
+  /* background-color: #2196F3; */
+  padding: 10px;
+  margin-right: 5%;
+  margin-left: 5%;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+} 
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+  margin-top:15px;
+  border-radius: 15px;
+  text-align: center;
+  background-color:#4682B4;
+  color:white;
+  font-size: 30px;
+  overflow: auto;
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .grid-container  {
+    grid-template-areas: 
+      'header header header header header header'
+      'subhead subhead subhead subhead subhead subhead'
+      'left left left left left left' 
+      'middle middle middle middle middle middle' 
+      'right right right right right right'
+  }
+}
+/*Search Bar*/
+.topnav input[type=text] {
+  border: 1px solid #ccc;
+  border-radius: 15px;  
+}
+.topnav input[type=text] {
+  float: left;
+  width: 90%;
+  height: 45px;
+  padding: 6px;
+  border: solid #4682B4;
+  margin-top: 8px;
+  margin-right: 16px;
+  margin-left: 16px;
+  font-size: 17px;
+  border-radius: 15px;
+}
+.topnav button {
+  float: left;
+  display: block;
+  text-align: left;
+  margin-top: 8px;
+  padding: 14px;
+  border: solid #4682B4;
+  border-radius: 15px;
+}
+a {
+  text-decoration: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Button */
+/* .header .button {
+  background-color: #B73A38;
+  border: 1px solid #B73A38;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  display: block;
+  margin: 10px;
+  border-radius: 15px;
+  text-transform: uppercase;
+} */
+
+/* .header .button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+  /* border-radius: 15px;
+} */
+
+/* .header .button:hover {
+  background-color: rgba(183, 58, 56, 0.842);
+  border-radius: 15px;
+} */
+</style>
+</head>
+<body>
+<div class="grid-container">
+  <div class="header" style="border:solid black"><a href="homepage.php" style="color:#B73A38; border: solid black">EducateMe</a>
+    <div class="topnav">
+        <input type="text" placeholder="Search..">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+  <div class="subhead" style="border:solid black">Maths
+        
+  </div>
+  <div class="left">
+    <div class="title">TASKS</div>
+    <div id="tasksOp">
+        <!-- <script>makeList();</script> -->
+    </div>
+  </div>
+  <div class="middle">
+    <div class="title">QUIZZES</div>
+        <div id="qizzesOp">
+
+        </div>
+  </div>  
+  <div class="right">
+    <div class="title">ASSIGNMENTS</div>
+    <div class="assignments">
+        
+    </div> 
+  </div>
+  
+</div>
+<script>
+var options = [
+        set0 = ['Fractions', 'Percentages', 'Surface Area', 'Volume of 3D shapes'],
+        set1 = ['Fractions - All four functions', 'Reverse Percentages', 'Surface Area and Volume', 'Estimation and Rounding']
+    ];
+
+    var optionsLink = [
+        set0 = ['404.html', '404.html', '404.html', '404.html'],
+        set1 = ['Fractions - All four functions', 'Reverse Percentages', 'Surface Area and Volume', 'Estimation and Rounding']
+    ];
+
+function makeUL(array, arrayLink) {
+    // Create the list element:
+    var list = document.createElement('ul');
+
+    for(var i = 0; i < array.length; i++) {
+        
+        var link = document.createElement('a');
+        // link.setAttribute(arrayLink[i]);
+
+        // Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(array[i]));
+
+        // Add it to the list:
+        list.appendChild(item);
+    }
+
+    // Finally, return the constructed list:
+    return list;
+}
+
+// Add the contents of options[0] to #foo:
+document.getElementById('tasksOp').appendChild(makeUL(options[0], optionsLink[0]));
+document.getElementById('qizzesOp').appendChild(makeUL(options[1]));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+body{
+    margin: 0 auto;
+    background-image: url("loginBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 1000px;
+    font-family: sans-serif;
+    
+}
+
+.container{
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    background-color: rgba(52, 73, 95, 0.7);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+
+input[type="text"]{
+    margin-top: 150px;
+}
+
+input[type="text"], [type="password"]{
+    height: 45px;
+    width: 250px;
+    font-size: 18px;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: whitesmoke;
+    padding-left: 40px;
+}
+
+.btn-login{
+    padding: 15px 25px;
+    cursor: pointer;
+    color: black;
+    border-radius: 4px;
+    border: none;
+    background-color: whitesmoke;
+    border-bottom: 4px solid #27AEG0;
+    margin-bottom: 20px;
+    
+}
+
+a, p{
+    color: whitesmoke;
+    font-family:monospace;
+    font-size: 18px;
+}
